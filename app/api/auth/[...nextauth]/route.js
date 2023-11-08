@@ -2,6 +2,7 @@ import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers";
 import { connectToDB } from "@utils/database";
 import { connect } from "mongoose";
+import { User } from "next-auth";
 console.log({
   clientId: process.env.GOOGLE_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
