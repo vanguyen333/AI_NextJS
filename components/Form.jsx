@@ -10,6 +10,36 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         {type} and share amazing prompts with the workd, and let your
         imagination run wild with any AI-powered platform
       </p>
+      <form
+        onSubmit={handleSubmit}
+        className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
+      >
+        <label>
+          <span className="font-satoshi font-semibold text-base text-gray-700">
+            Your AI Prompt
+          </span>
+          <textarea
+            value={post.prompt}
+            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
+            placeholder="write your prompt here..."
+            className="form_textarea"
+          />
+        </label>
+        {/* <label>
+          <span className="font-satoshi font-semibold text-base text-gray-700">
+            Tag
+            <span className="font-normal">
+              (#Product, #webdevelopment, #idea)
+            </span>
+          </span>
+          <textarea
+            value={post.prompt}
+            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
+            placeholder="write your prompt here..."
+            className="form_textarea"
+          />
+        </label> */}
+      </form>
     </section>
   );
 };
