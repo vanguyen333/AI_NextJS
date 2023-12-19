@@ -5,7 +5,33 @@ import PromptCard from "./PromptCard";
 
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
+  const [posts, setPosts] = useState([]);
+
   const handleSearchChange = (e) => {};
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch("/api/prompt");
+      const data = await response.json();
+
+      setPosts(data);
+    };
+    fetchPosts();
+  }, []);
+
+  const PromptCardList = ({ data, handleTagClick }) => {
+    return (
+      <div className="mt-16 prompt_layout">
+        {data.map((post) => (
+          <PromptCard
+            key={post.id}
+            post={post}
+            handleTagClick={handleTagClick}
+          />
+        ))}
+      </div>
+    );
+  };
   return (
     <section className="feed">
       {" "}
@@ -19,6 +45,7 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
+      <PromptCardList data={[posts]} handleTagClick={() => {}} />
     </section>
   );
 };
